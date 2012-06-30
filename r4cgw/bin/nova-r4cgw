@@ -1,0 +1,34 @@
+#!/usr/bin/python
+"""Starter script for Nova Compute."""
+
+import eventlet
+eventlet.monkey_patch()
+
+import os
+import sys
+
+# If ../nova/__init__.py exists, add ../ to Python search path, so that
+# it will override what happens to be installed in /usr/(local/)lib/python...
+POSSIBLE_TOPDIR = os.path.normpath(os.path.join(os.path.abspath(sys.argv[0]),
+                                   os.pardir,
+                                   os.pardir))
+if os.path.exists(os.path.join(POSSIBLE_TOPDIR, 'nova', '__init__.py')):
+    sys.path.insert(0, POSSIBLE_TOPDIR)
+
+sys.path.insert(0,'/home/ubuntu/cloud/r4cgw')
+sys.path.insert(0,'/home/ubuntu/cloud')
+
+
+from nova import flags
+from nova import log as logging
+from nova import service
+from nova import utils
+
+if __name__ == '__main__':
+    utils.default_flagfile()
+    flags.FLAGS(sys.argv)
+    logging.setup()
+    utils.monkey_patch()
+    server = service.Service.create(binary='nova-r4cgw',topic='r4cgw',manager='r4cgw.gw.manager.GwManager')
+    service.serve(server)
+    service.wait()

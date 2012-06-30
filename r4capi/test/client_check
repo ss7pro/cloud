@@ -1,0 +1,2 @@
+GET /client/name/check/ziut?dupa HTTP/1.0
+x-auth-token: dab9052f2fa6427fa494bf423e7bfa9e

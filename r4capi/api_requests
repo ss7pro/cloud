@@ -1,0 +1,26 @@
+1) PERIODS
+    a) GET /period/list
+
+2) CHARGES
+
+    - POST /charge/list/period/${period}
+
+        return summary for a given period
+
+        $service_name,$service_type,$zone,$service_id,$created,$dropped
+            $charge_type,$charge_area,$amount,$units
+
+    - POST /charge/service/${service}/period/${period}
+
+    
+
+        return detailed info for a given period
+
+    - GET /charge/service/${service}/period/${period}/unit
+
+        return simulation for next unit charges
+
+
+3) Pricing
+
+    - GET /pricing/${service_name}/${service_type}/${zone}/${size}/${datetime}

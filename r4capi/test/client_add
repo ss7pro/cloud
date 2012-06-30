@@ -1,0 +1,6 @@
+POST /client/add HTTP/1.0
+x-auth-token: dab9052f2fa6427fa494bf423e7bfa9e
+Content-type: application/json
+Content-Length: 46
+
+{"client":{"name":"ziu2","password":"dupa.8"}}
